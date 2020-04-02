@@ -16,12 +16,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-
-
-    
 </head>
 <body>
-
 
 <?php	    	    
     	// connect to db
@@ -30,6 +26,10 @@
     	}
     	$dbh = ConnectDB();
 ?>
+
+<div class="jumbotron text-center">
+  <h2> NJ Coronavirus Tracker </h2>
+</div>
 
 <!-- Current totals chart -->
 <div class="container">
@@ -93,8 +93,7 @@
   </script>
 
   <div id="line_top_x"></div>
-  <h1> 1 </h1>
-  </div>
+</div>
 
 <br> 
 <br> 
