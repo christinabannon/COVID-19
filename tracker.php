@@ -111,6 +111,9 @@
       var data = new google.visualization.DataTable();
       data.addColumn('date', 'Day');
       data.addColumn('number', 'New Cases');
+      data.addColumn('number', 'New Recoveries');
+      data.addColumn('number', 'New Deaths');
+
       data.addRows([
 <?php
         $sql = "call getNewCases();";
@@ -121,7 +124,9 @@
         $currentRow = 1;
         foreach ($resultSet as $row) {
                 echo "[ new Date(".$row['date']."), "
-                        .$row['newCases']."]";
+                        .$row['current'].", "
+                        .$row['recovered'].", "
+                        .$row['dead']."]";
                 if ($currentRow < $totalRows) {
                         echo ", ";
                 }
@@ -132,7 +137,7 @@
       var options = {
         chart: {
           title: 'New Coronavirus Cases in NJ',
-          subtitle: 'New cases diagnosed per day'
+          subtitle: 'New cases diagnosed in the past day'
         },
         width: 900,
         height: 500,
@@ -151,28 +156,7 @@
   <div id="NewCases"></div>
 </div>
 
-<?php
-	$sql = "call getDatesCountsNJ();";
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute();
-	echo '<table style="text-align:center">';
-    	echo   "<tr>
-		    <th> Date  </th>
-		    <th> Number of  Current Cases </th>
-    	   	</tr>";
-
-	foreach ($stmt->fetchAll() as $row) {
-	    echo "<tr>"; 
-	    echo "<td>".$row['date']."</td>";
-	    echo "<td>".$row['current']."</td>";
-	    echo "</tr>";
-	}
-	
-    	echo "</tr>";
-	echo "</table>";
-	echo "</p>";
-?>
-
+<br> <br> <br> 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
   crossorigin="anonymous"></script>
