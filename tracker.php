@@ -156,7 +156,9 @@
   <div id="NewCasesNJ"></div>
 </div>
 <br><br><br>
-<!-- Current totals chart -->
+
+
+<!-- Atlantic County Current totals chart -->
 <div class="container">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
