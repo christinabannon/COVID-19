@@ -152,11 +152,10 @@
       chart.draw(data, google.charts.Line.convertOptions(options));
     }
   </script>
-
   <div id="NewCasesNJ"></div>
 </div>
-<br><br><br>
 
+<br><br><br>
 
 <!-- Atlantic County Current totals chart -->
 <div class="container">
@@ -221,7 +220,62 @@
 
   <div id="datesCountsAC"></div>
 </div>
+
 <br> <br> <br> 
+
+<div class="container">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawNewCasesAC);
+
+    function drawNewCasesAC() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Day');
+      data.addColumn('number', 'New Cases');
+      data.addColumn('number', 'New Recoveries');
+      data.addColumn('number', 'New Deaths');
+
+      data.addRows([
+<?php
+        $sql = "call getNewCasesAC();";
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $resultSet = $stmt->fetchAll();
+        $totalRows = count($resultSet);
+        $currentRow = 1;
+        foreach ($resultSet as $row) {
+                echo "[ new Date(".$row['date']."), "
+                        .$row['current'].", "
+                        .$row['recovered'].", "
+                        .$row['dead']."]";
+                if ($currentRow < $totalRows) {
+                        echo ", ";
+                }
+        }
+?>
+      ]);
+
+      var options = {
+        chart: {
+          title: 'New Coronavirus Cases in Atlantic County',
+          subtitle: 'New cases diagnosed in the past day'
+        },
+        width: 900,
+        height: 500,
+        axes: {
+          x: {
+            0: {side: 'bottom'}
+          }
+        }
+      };
+
+      var chart = new google.charts.Line(document.getElementById('NewCasesAC'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+  </script>
+  <div id="NewCasesAC"></div>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
