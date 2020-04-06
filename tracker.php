@@ -36,9 +36,9 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['line']});
-      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawDatesCountsNJChart);
 
-    function drawChart() {
+    function drawDatesCountsNJChart() {
       var data = new google.visualization.DataTable();
       data.addColumn('date', 'Day');
       data.addColumn('number', 'Current Cases');
@@ -54,23 +54,23 @@
       ]);
        */
       data.addRows([
-<?php
-  $sql = "call getDatesCountsNJ();";
-  $stmt = $dbh->prepare($sql);
-	$stmt->execute();
-	$resultSet = $stmt->fetchAll();
-	$totalRows = count($resultSet);
-	$currentRow = 1;
-        foreach ($resultSet as $row) {
+      <?php
+          $sql = "call getDatesCountsNJ();";
+          $stmt = $dbh->prepare($sql);
+        	$stmt->execute();
+        	$resultSet = $stmt->fetchAll();
+        	$totalRows = count($resultSet);
+        	$currentRow = 1;
+          foreach ($resultSet as $row) {
                 echo "[ new Date(".$row['date']."), "
-			.$row['current'].", "
-			.$row['recovered'].", "
-			.$row['dead']."]";
-		if ($currentRow < $totalRows) {
-			echo ", ";
-		}
-	}
-?>
+		          	.$row['current'].", "
+		          	.$row['recovered'].", "
+	          		.$row['dead']."]";
+	            	if ($currentRow < $totalRows) {
+	                		echo ", ";
+		            }
+	        }
+      ?>
       ]);
 
       var options = {
@@ -87,12 +87,12 @@
         }
       };
 
-      var chart = new google.charts.Line(document.getElementById('line_top_x'));
+      var chart = new google.charts.Line(document.getElementById('datesCountsNJ'));
       chart.draw(data, google.charts.Line.convertOptions(options));
     }
   </script>
 
-  <div id="line_top_x"></div>
+  <div id="datesCountsNJ"></div>
 </div>
 
 <br> 
