@@ -116,7 +116,7 @@
 
       data.addRows([
 <?php
-        $sql = "call getNewCases();";
+        $sql = "call getNewCasesNJ();";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         $resultSet = $stmt->fetchAll();
@@ -148,12 +148,12 @@
         }
       };
 
-      var chart = new google.charts.Line(document.getElementById('NewCases'));
+      var chart = new google.charts.Line(document.getElementById('NewCasesNJ'));
       chart.draw(data, google.charts.Line.convertOptions(options));
     }
   </script>
 
-  <div id="NewCases"></div>
+  <div id="NewCasesNJ"></div>
 </div>
 
 <br> <br> <br> 
