@@ -155,8 +155,73 @@
 
   <div id="NewCasesNJ"></div>
 </div>
+<br><br><br>
+<!-- Current totals chart -->
+<div class="container">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawDatesCountsACChart);
 
+    function drawDatesCountsACChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Day');
+      data.addColumn('number', 'Current Cases');
+      data.addColumn('number', 'Recovered Cases');
+      data.addColumn('number', 'Deaths');
+
+      /*
+      format: 
+      data.addRows([
+        [new Date(2020, 2, 14),  37.8, 80.8, 41.8],
+        [new Date(2020, 2, 15),  30.9, 69.5, 32.4],
+        [new Date(2020, 2, 16),  25.4,   57, 25.7]
+      ]);
+       */
+      data.addRows([
+      <?php
+          $sql = "call getDatesCountsAC();";
+          $stmt = $dbh->prepare($sql);
+        	$stmt->execute();
+        	$resultSet = $stmt->fetchAll();
+        	$totalRows = count($resultSet);
+        	$currentRow = 1;
+          foreach ($resultSet as $row) {
+                echo "[ new Date(".$row['date']."), "
+		          	.$row['current'].", "
+		          	.$row['recovered'].", "
+	          		.$row['dead']."]";
+	            	if ($currentRow < $totalRows) {
+	                		echo ", ";
+		            }
+	        }
+      ?>
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Coronavirus Cases in Atlantic County',
+          subtitle: 'current, recovered and dead'
+        },
+        width: 900,
+        height: 500,
+        axes: {
+          x: {
+            0: {side: 'bottom'}
+          }
+        }
+      };
+
+      var chart = new google.charts.Line(document.getElementById('datesCountsAC'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+  </script>
+
+  <div id="datesCountsAC"></div>
+</div>
 <br> <br> <br> 
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
   crossorigin="anonymous"></script>
