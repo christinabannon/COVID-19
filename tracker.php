@@ -93,7 +93,6 @@
   </script>
 
   <div id="datesCountsNJ"></div>
-</div>
 
 <br> 
 <br> 
@@ -101,7 +100,6 @@
 
 
 <!-- New Cases since yesterday chart -->
-<div class="container">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['line']});
@@ -153,12 +151,10 @@
     }
   </script>
   <div id="NewCasesNJ"></div>
-</div>
 
 <br><br><br>
 
 <!-- Atlantic County Current totals chart -->
-<div class="container">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['line']});
@@ -219,11 +215,9 @@
   </script>
 
   <div id="datesCountsAC"></div>
-</div>
 
 <br> <br> <br> 
 
-<div class="container">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['line']});
@@ -276,7 +270,6 @@
   </script>
   <div id="NewCasesAC"></div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
