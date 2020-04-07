@@ -77,7 +77,12 @@
         chart: {
           title: 'Coronavirus Cases in NJ',
           subtitle: 'current, recovered and dead'
-        },
+	},
+	series: {
+	  0: { color: '#1c91c0' },
+	  1: { color: '#6f9654' },
+	  2: { color: '#e2431e' }
+	},
         width: 900,
         height: 500,
         axes: {
@@ -136,6 +141,11 @@
         chart: {
           title: 'New Coronavirus Cases in NJ',
           subtitle: 'New cases diagnosed in the past day'
+     	},
+    	series: {
+          0: { color: '#1c91c0' },
+          1: { color: '#6f9654' },
+          2: { color: '#e2431e' }
         },
         width: 900,
         height: 500,
@@ -199,6 +209,11 @@
         chart: {
           title: 'Coronavirus Cases in Atlantic County',
           subtitle: 'current, recovered and dead'
+	},
+        series: {
+          0: { color: '#1c91c0' },
+          1: { color: '#6f9654' },
+          2: { color: '#e2431e' }
         },
         width: 900,
         height: 500,
@@ -254,6 +269,11 @@
         chart: {
           title: 'New Coronavirus Cases in Atlantic County',
           subtitle: 'New cases diagnosed in the past day'
+        },
+	series: {
+          0: { color: '#1c91c0' },
+          1: { color: '#6f9654' },
+          2: { color: '#e2431e' }
         },
         width: 900,
         height: 500,
